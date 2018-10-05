@@ -1,0 +1,9 @@
+.login-form {
+    display: flex;
+    margin: 25%;
+    justify-content: center
+}
+.sub-con {
+    display: flex;
+    justify-content: space-around;
+}
