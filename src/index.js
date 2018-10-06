@@ -1,21 +1,30 @@
-import React, { Component }from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import {  Router,browserHistory   } from 'react-router';
-import Root from './app';
+import { HashRouter, Switch , Route } from 'react-router-dom'
+import Root, { App } from './app';
 import { Provider } from 'react-redux'
 import store from './reducers/index';
 import routes from './routes';
+import Loginform from './components/login/login';
 class Main extends Component {
-  render(){
+  
+
+  render() {
     return (
-      <Root/>
+        <Switch>
+          <Route exact path="/" component={Root}>{ this.props.children}</Route>
+          <Route path="/login" component={Loginform} >{this.props.children}</Route> 
+             
+        </Switch>
     )
   }
 }
 
 ReactDOM.render(
   <Provider store={store}>
-    <Main/>
+    <HashRouter>
+      <Main/>
+    </HashRouter>
   </Provider>
   ,
   document.getElementById('root'),

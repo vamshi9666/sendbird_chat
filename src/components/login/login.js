@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap'
-import { browserHistory } from 'react-router';
+import { connect } from 'react-redux'
 import './styles.css';
 
-export default class Loginform extends Component {
+  class Loginform extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -16,7 +16,6 @@ export default class Loginform extends Component {
     onSubmit(e) {
         e.preventDefault();
         this.props.submit(this.state.form_value);
-        
           
     }
 
@@ -43,3 +42,5 @@ export default class Loginform extends Component {
 
     }
 }
+
+export default connect(null) (Loginform)
