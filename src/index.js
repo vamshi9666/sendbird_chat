@@ -12,7 +12,7 @@ class Main extends Component {
   render() {
     return (
         <Switch>
-          <Route exact path="/" component={Root}>{ this.props.children}</Route>
+          <Route exact path="/" component={Root}></Route>
           <Route path="/login" component={Loginform} >{this.props.children}</Route> 
              
         </Switch>

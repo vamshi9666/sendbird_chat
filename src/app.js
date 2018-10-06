@@ -6,7 +6,6 @@ import { Redirect } from 'react-router'
 import { connect } from 'react-redux'
 
 import './styles.css'
-import Loginform from './components/login/login';
 export class App extends Component {
     render() {
         return (
@@ -27,7 +26,7 @@ export class App extends Component {
     }
 }
 
- export class Root extends Component {
+  class Root extends Component {
     
    
     render() {      
