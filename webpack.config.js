@@ -1,39 +1,34 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-module.exports = {
-	entry: './src/index.js',
-	output: {
-		// eslint-disable-next-line
-		path: path.join(__dirname, '/dist'),
-		filename: 'index_bundle.js'
-	},
-	module: {
-		rules: [
-			{
-				test: /\.js$/,
-				exclude: /node_modules/,
-				use: {
-					loader: 'babel-loader'
-				}
-			},
-			{
-				test: /\.css$/,
-				use: ['style-loader', 'css-loader']
-			},
-			{
-				test: /\.html$/,
-				use: [
-					{
-						loader: 'html-loader'
-					}
-				]
-			}
-		]
-	},
-	plugins: [
-		new HtmlWebpackPlugin({
-			template: './index.html',
-			filename: './index.html'
-		})
-	]
-};
+import path from 'path'
+import webpack from 'webpack';
+
+export default {
+  devtools: 'eval-source-map',
+  entry: [
+    'webpack-hot-middleware/client',
+    path.join(__dirname, '/client/index.js')
+  ],
+  output: {
+    path: '/',
+    publicPath: '/'
+  },
+  plugins: [
+    new webpack.NoErrorsPlugin(),
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin()
+  ],
+  module: {
+    loaders: [
+      {
+        test: /\.js$/,
+        include: [
+          path.join(__dirname, 'client'),
+          path.join(__dirname, 'server/shared')
+        ],
+        loaders: [ 'react-hot', 'babel' ]
+      }
+    ]
+  },
+  resolve: {
+    extentions: [ '', '.js' ]
+  }
+}
