@@ -1,10 +1,14 @@
-import React , { Component  } from 'react';
+import React, { Component } from 'react';
+import NavComponent from './components/nav';
 
 export default class App extends Component {
-	render(){
+	render() {
 		return (
-			<div>
-				<h1>Hello from react</h1>
+			<div className="nav-con">
+				<nav className="navbar navbar-expand-lg navbar-light bg-light">
+					<NavComponent />
+				</nav>
+				{this.props.children}
 			</div>
 		)
 	}

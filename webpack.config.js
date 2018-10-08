@@ -24,11 +24,15 @@ export default {
           path.join(__dirname, 'client'),
           path.join(__dirname, 'server/shared')
         ],
-        loaders: [ 'react-hot', 'babel' ]
-      }
+        loaders: ['react-hot', 'babel']
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      },
     ]
   },
   resolve: {
-    extentions: [ '', '.js' ]
+    extentions: ['', '.js']
   }
 }

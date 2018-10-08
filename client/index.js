@@ -1,5 +1,27 @@
 import React , { Component } from 'react';
 import { render } from 'react-dom';
-import App from './app';
+import { Router, browserHistory } from 'react-router';
+import routes from './routes';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware} from 'redux';
+import thunk from 'redux-thunk';
+import { setAuthorizationToken } from './utils/auth';
+import {  signUpAction } from './actions/login';
+import jwtDecode from 'jwt-decode';
 
-render(<App/>, document.getElementById('root'))
+const store = createStore(
+    (state = {})=> state,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+    applyMiddleware(thunk)
+)
+// server side auth 
+// if (localStorage.jwtToken) {
+//     setAuthorizationToken(localStorage.jwtToken);
+//     store.dispatch(signUpAction(jwtDecode(localStorage.jwtToken)));
+//   }
+render(
+    <Provider store={store} >
+        <Router history={browserHistory} routes={routes} />
+    </Provider>
+    
+, document.getElementById('root'))
