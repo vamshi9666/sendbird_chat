@@ -8,9 +8,9 @@ import thunk from 'redux-thunk';
 import { setAuthorizationToken } from './utils/auth';
 import {  signUpAction } from './actions/login';
 import jwtDecode from 'jwt-decode';
-
+import rootReducer from './reducers/'
 const store = createStore(
-    (state = {})=> state,
+    rootReducer,
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
     applyMiddleware(thunk)
 )
