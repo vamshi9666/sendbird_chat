@@ -1,7 +1,8 @@
-import {   } from 'redux';
+import { combineReducers  } from 'redux';
 import userReducer from './user';
+import channelReducer from './channel';
 
 export default combineReducers({
-	userReducer,
-	channelReducer
+	user:userReducer,
+ 	channel:channelReducer	
 })

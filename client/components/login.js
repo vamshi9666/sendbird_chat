@@ -33,10 +33,13 @@ class Login extends Component {
     }
     onSubmit(e){
         e.preventDefault();
-        this.props.loginAction(this.state);
-        this.context.router.push('/home')
+        console.log(this.props);
         
+        this.props.loginAction(this.state)
+        this.context.router.push('/home')
     }
+        
+    
     handleChange(e) {
         this.setState({ [e.target.name]: e.target.value });
     }
@@ -79,5 +82,8 @@ Login.contextTypes = {
 
 Login.propTypes = {
     loginAction : propTypes.func.isRequired
+}
+const mapStateToProps = ( ) => {
+
 }
 export default connect(null, { loginAction }) (Login);

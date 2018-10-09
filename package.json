@@ -39,7 +39,7 @@
     "react-router": "^2.5.0",
     "reactstrap": "^6.5.0",
     "redux": "^3.5.2",
-    "redux-thunk": "^2.1.0",
+    "redux-thunk": "^2.3.0",
     "sendbird": "^3.0.81",
     "style-loader": "^0.23.0"
   }

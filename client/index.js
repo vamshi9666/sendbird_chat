@@ -5,9 +5,6 @@ import routes from './routes';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
-import { setAuthorizationToken } from './utils/auth';
-import {  signUpAction } from './actions/login';
-import jwtDecode from 'jwt-decode';
 import rootReducer from './reducers/'
 const store = createStore(
     rootReducer,

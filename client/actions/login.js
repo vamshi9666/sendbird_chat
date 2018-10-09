@@ -6,8 +6,16 @@ export const sb = new SendBird({
 export function loginAction (obj){    
     return dispatch => {
         console.log(obj);
-        return sb.connect(obj.username)
-
+        sb.connect(obj.username);
+        dispatch({
+            type:'LOGIN',
+            username: obj.username
+        }) 
     }
 }
 
+export function logOutAction (obj) {
+    return dispatch => {
+        type:'LOGOUT'
+    }
+}

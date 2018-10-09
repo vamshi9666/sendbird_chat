@@ -1,30 +1,24 @@
 import React, { Component } from 'react';
+
+import Message from '../components/message'
 import {
     ListGroup,
     ListGroupItem
  } from 'react-bootstrap';
- const conStyles = {
-    'box-sizing': 'border-box',
-    'padding-left': '6px',
-    'width': '100%',
-    'height': '100%',
 
-}
-const message ={
-    'width':'700px'
-}
 class MessageList extends Component {
-    render() {
+	constructor(props){
+		super(props);
+
+	}
+	render() {
         return (
-            <div style={conStyles}>
-                
-                    <p>
-                        hello dan
-                    </p>        
-                    <p> Hey vamshi</p>
-                
-            </div>
-            
+              <div className="message-list">
+	  	<ul>
+			<li> Hell </li>
+			<li> God </li>
+		</ul>
+		</div>
         )
     }
 }
