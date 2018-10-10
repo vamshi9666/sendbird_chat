@@ -15,8 +15,7 @@ class MessageList extends Component {
         return (
               <div className="message-list">
 	  	<ul>
-			<li> Hell </li>
-			<li> God </li>
+			<Message username="vamshi"  text="hey" />
 		</ul>
 		</div>
         )

@@ -11,17 +11,23 @@ import {
 class SideBar extends Component {
     constructor(props){
         super(props);
+        this.state= {
+            channels:[]
+        }
 
     }
     componentWillMount (){
         this.props.getChannels()
+        
     }
     render() {
         return (
-            <div className="flex" >
-                <ListGroupItem  href="#link1">Link 1</ListGroupItem>
-                <ListGroupItem href="#link2">Link 2</ListGroupItem>
-                <ListGroupItem >Trigger an alert</ListGroupItem>
+            <div className="rooms-list">
+                <ul>
+                <h3>channels:</h3>
+                <h5>first channel</h5> 
+                <h5>Second channel</h5> 
+                </ul>
             </div>
                     )
     }

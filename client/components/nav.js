@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+import propTypes from 'prop-types'
 import { connect } from 'react-redux';
 import { logOutAction } from '../actions/login';
 import {
@@ -7,26 +8,39 @@ import {
     Button,
     NavItem,
     Nav
-    
+
 } from 'react-bootstrap';
 
 
 class NavComponent extends Component {
+    logout(e){
+        e.preventDefault();
+
+        this.props.logOutAction();
+    }
     render() {
         return (
             <Navbar>
                 <Navbar.Header>
                     <Navbar.Brand>
-                        <Link to="/">Home</Link>
+                        {this.props.user.isAuthenticated 
+                        ? <Link to="/home"> Home</Link> 
+                        : <Link to="/">Home</Link>      }
+                        
                     </Navbar.Brand>
                 </Navbar.Header>
                 <Nav>
+
                     <NavItem >
-                        <Link to='login' >Login </Link>
+                        {this.props.user.isAuthenticated ?
+                            <Button onClick={this.logout.bind(this)} className="btn btn-danger" >Log out
+                            </Button>
+                            :
+                            <Link to='login' >
+                                <Button > Login </Button>
+                            </Link>
+                        }
                     </NavItem>
-                    <NavItem >
-                         <Button onClick={this.props.logOut} className="btn btn-danger" >Log out</Button>
-                    </NavItem>  
                 </Nav>
             </Navbar>
         )
@@ -34,4 +48,16 @@ class NavComponent extends Component {
 }
 
 
-export default connect(null, { logOutAction  }) (NavComponent);
+NavComponent.propTypes = {
+    logOutAction: propTypes.func.isRequired,
+    user: propTypes.object.isRequired
+}
+
+const mapStateToProps = (state) => {
+    return {
+        user: state.user
+    }
+}
+
+
+export default connect(mapStateToProps, { logOutAction })(NavComponent);

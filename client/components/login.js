@@ -33,7 +33,8 @@ class Login extends Component {
     }
     onSubmit(e){
         e.preventDefault();
-        console.log(this.props);
+        console.log(`this.props`);
+        console.log(this.context);
         
         this.props.loginAction(this.state)
         this.context.router.push('/home')

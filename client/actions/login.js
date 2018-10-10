@@ -14,8 +14,10 @@ export function loginAction (obj){
     }
 }
 
-export function logOutAction (obj) {
+export function logOutAction () {    
     return dispatch => {
-        type:'LOGOUT'
+        dispatch({
+            type:"LOGOUT"
+        })
     }
 }
