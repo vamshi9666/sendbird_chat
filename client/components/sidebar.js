@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import propTypes from 'prop-types';
-import { getChannels } from '../actions/channels'
+import { getChannels , addChannel } from '../actions/channels';
+import Channel from './channel'
 import { 
-    ListGroup,
-    ListGroupItem
+    Button
 } from 'react-bootstrap';
-
+import {  store } from '../index'
 
 class SideBar extends Component {
     constructor(props){
@@ -16,24 +16,39 @@ class SideBar extends Component {
         }
 
     }
+    addChannel(e){
+        e.preventDefault();
+        this.props.addChannel()
+    }
     componentWillMount (){
+        console.log(store.getState());
         this.props.getChannels()
+        this.setState({
+            channels: store.getState().channel.channels
+        })
         
     }
     render() {
+        console.log(this.state.channels[0]);
+        
         return (
             <div className="rooms-list">
+                 <h3>channels</h3>
                 <ul>
-                <h3>channels:</h3>
-                <h5>first channel</h5> 
-                <h5>Second channel</h5> 
+                {this.state.channels.map(channel=> (
+                    <Channel  name={channel.name} />
+                ))}
+                
+                    <Button className="btn" onClick={this.addChannel.bind(this)}>  +  </Button>
+                
                 </ul>
             </div>
                     )
     }
 }
 SideBar.propTypes = {
-    getChannels: propTypes.func.isRequired
+    getChannels: propTypes.func.isRequired,
+    addChannel : propTypes.func.isRequired
 }
 
-export default  connect(null, { getChannels }) (SideBar);
+export default  connect(null, { getChannels , addChannel}) (SideBar);
