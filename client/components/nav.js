@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import propTypes from 'prop-types'
 import { connect } from 'react-redux';
-import { logOutAction } from '../actions/login';
+import { sbLogout } from '../actions/login';
 import {
     Navbar,
     Button,
@@ -33,7 +33,7 @@ class NavComponent extends Component {
 
                     <NavItem >
                         {this.props.user.isAuthenticated ?
-                            <Button onClick={this.logout.bind(this)} className="btn btn-danger" >Log out
+                            <Button onClick={this.logout.bind(this)} className="btn  btn-danger" >Log out
                             </Button>
                             :
                             <Link to='login' >
@@ -60,4 +60,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, { logOutAction })(NavComponent);
+export default connect(mapStateToProps, { sbLogout })(NavComponent);

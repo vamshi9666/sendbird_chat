@@ -1,8 +1,10 @@
-import { combineReducers  } from 'redux';
+import { combineReducers } from 'redux';
 import userReducer from './user';
-import channelReducer from './channel';
+import messageReducer  from './message';
+import openChannelReducer from './openchannels';
 
 export default combineReducers({
-	user:userReducer,
- 	channel:channelReducer	
+    user:userReducer,
+    message: messageReducer,
+    openChannel : openChannelReducer
 })
