@@ -6,7 +6,8 @@ const defaultState = {
 
 export  default function (state = defaultState, action ){
     switch (action.type){
-        case "ADD_CHANNEL":
+        case "ADD_CHANNELS":
+             state.channels = []
               state.channels= action.payload
         case "ENTER_CHANNEL":
                 state.activeChannel= action.payload

@@ -33,6 +33,7 @@
       text-align: center;
       border-right: 1px solid #3f3f3f;
       justify-content: space-around;
+      overflow-y: scroll;
       height: 100%;
   }
 

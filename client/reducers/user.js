@@ -2,7 +2,7 @@ import SendBird from 'sendbird';
 const defaultState = {
 	user: null,
 	isAuthenticated: false,
-	sb: null,
+	sbInstance: {},
 	error:null
 };
 export const sb = new SendBird({
@@ -15,12 +15,12 @@ export default function (state = defaultState, action) {
 	switch (action.type) {
 		case 'LOGOUT':
 			state.user = null;
-			state.sb = null;
+			state.sbInstance = null;
 			state.isAuthenticated = false;
 			break;
 		case "LOGIN_SUCCESS":
 			state.user = action.user;
-			state.sb = action.sb;
+			state.sbInstance = action.sbInstance;
 			state.isAuthenticated = true;
 			break;
 		case "LOGIN_FAIL":

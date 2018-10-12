@@ -5,6 +5,7 @@ const sb = new SendBird({'appId': '5E786747-D695-4556-9C31-4D7165C1B17B'});
 const sbConnect = (userId, nickName) => {
     return new Promise((resolve, reject) => {
         sb.connect(userId, (user,error)=> {
+            
             if(error){
                 console.log(error);
                 reject(error);
@@ -24,7 +25,7 @@ export const sbLogin = ({ userId, nickname }) => {
            dispatch({
                type:"LOGIN_SUCCESS",
                user: user,
-               sb:sb
+               sbInstance:SendBird.getInstance()
            })
        })
     }

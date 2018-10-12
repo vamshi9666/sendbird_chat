@@ -11,40 +11,41 @@ class SideBar extends Component {
     constructor(props){
         super(props);
         this.state= {
-            newChannelName:''
+            NAME:''
         }
 
     }
     addChannel(e){
         e.preventDefault();
-        this.props.addChannel()
+        console.log(`add channel clicked `);
+        this.props.addChannel(this.state)
     }
     componentDidMount (){
-
+        this.props.getChannels()
     }
     handleChange(e) {
-        this.setState({newChannelName: e.target.value});
+        this.setState({NAME: e.target.value});
       }
     render() {     
         console.log(this.props);
-           
         return (
             <div >
-                 <h3>channels</h3>
+                <h3>channels</h3>
                 <ul>
-                {this.props.openChannels.map(channel=> (
-                    <Channel  name={channel.name} />
-                ))}
-                <div>
-                <input type="text" value={this.state.newChannelName} onChange={this.handleChange} />
-                    <Button className="btn" onClick={this.addChannel.bind(this)}>  +  </Button>
-                </div>
-                    
+                    {this.props.openChannels.map(channel => (
+                        <Channel name={channel.name} />
+                    ))}
+                    <div>
+                        <input type="text" value={this.state.NAME} onChange={this.handleChange.bind(this)} />
+                        <Button className="btn" onClick={this.addChannel.bind(this)}>  +  </Button>
+                    </div>
+
                 </ul>
             </div>
                     )
     }
 }
+
 SideBar.propTypes = {
     openChannels: propTypes.array.isRequired,
     addChannel : propTypes.func.isRequired
@@ -56,4 +57,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default  connect(mapStateToProps, { getChannels , addChannel}) (SideBar);
+export default  connect( mapStateToProps, { getChannels , addChannel }) (SideBar);

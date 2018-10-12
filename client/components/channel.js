@@ -4,6 +4,7 @@ import {
     Row
 } from 'react-bootstrap';
 
+import '../styles.css';
 
 export default class Channel extends Component {
     constructor(props) {
@@ -11,7 +12,7 @@ export default class Channel extends Component {
     }
     render() {
         return (
-            <Row>
+            <Row className="channel-one" >
                 <Panel >
                     <Panel.Body>{this.props.name}</Panel.Body>
                 </Panel>

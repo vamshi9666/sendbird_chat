@@ -74,6 +74,7 @@ class Login extends Component {
     }
 }
 
+
 Login.contextTypes = {
     router: propTypes.object.isRequired
 }
