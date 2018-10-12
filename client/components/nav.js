@@ -15,10 +15,9 @@ import {
 class NavComponent extends Component {
     logout(e){
         e.preventDefault();
-
-        this.props.logOutAction();
+        this.props.sbLogout();
     }
-    render() {
+    render() {        
         return (
             <Navbar>
                 <Navbar.Header>
@@ -33,8 +32,7 @@ class NavComponent extends Component {
 
                     <NavItem >
                         {this.props.user.isAuthenticated ?
-                            <Button onClick={this.logout.bind(this)} className="btn  btn-danger" >Log out
-                            </Button>
+                            <Button onClick={this.logout.bind(this)} className="btn  btn-danger"> Log out </Button>
                             :
                             <Link to='login' >
                                 <Button > Login </Button>
@@ -49,15 +47,16 @@ class NavComponent extends Component {
 
 
 NavComponent.propTypes = {
-    logOutAction: propTypes.func.isRequired,
-    user: propTypes.object.isRequired
+    sbLogout: propTypes.func.isRequired,
+    user : propTypes.object.isRequired
 }
 
 const mapStateToProps = (state) => {
     return {
         user: state.user
     }
-}
+} 
+
 
 
 export default connect(mapStateToProps, { sbLogout })(NavComponent);

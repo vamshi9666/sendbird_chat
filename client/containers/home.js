@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import SideBar from '../components/sidebar';
 import MessageList from '../components/messagelist';
 import { Col, Row, Grid } from 'react-bootstrap';
+import '../styles.css'
 
 const rowStyle = {
   'display':'flex',
@@ -16,16 +17,15 @@ const sectionStyles = {
 class HomePage extends Component {
   render() {
     return (
-      <Grid>
-        <Row style={rowStyle}>
-          <Col style={sectionStyles} xs={2} md={2}>
-            <SideBar/>
-          </Col>
-          <Col style={sectionStyles} xs={10} md={10}>
-            <MessageList/>
-          </Col>
-        </Row>
-      </Grid>
+      <div id="container">
+      <aside id="sidebar">
+        <SideBar/>
+        </aside>
+      <section id="main">
+        <section id="messages-list"><MessageList/></section>
+        <section id="new-message">New message</section>
+      </section>
+</div>
     );
   }
 }

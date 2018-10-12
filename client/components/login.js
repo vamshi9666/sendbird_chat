@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import { connect } from 'react-redux'
-import { loginAction } from '../actions/login';
+import { sbLogin } from '../actions/login';
 import {
     FormControl,
     FormGroup,
@@ -25,18 +25,15 @@ class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: '',
-            nickName: ''
+            userId: '',
+            nickname: ''
         };
         this.handleChange = this.handleChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this)
     }
     onSubmit(e){
         e.preventDefault();
-        console.log(`this.props`);
-        console.log(this.context);
-        
-        this.props.loginAction(this.state)
+        this.props.sbLogin(this.state)
         this.context.router.push('/home')
     }
         
@@ -52,7 +49,7 @@ class Login extends Component {
                         <ControlLabel>User Name</ControlLabel>
                         <FormControl
                             bsSize="sm"
-                            name="username"
+                            name="userId"
                             type="text"
                             value={this.state.username}
                             placeholder="Enter text"
@@ -82,9 +79,9 @@ Login.contextTypes = {
 }
 
 Login.propTypes = {
-    loginAction : propTypes.func.isRequired
+    sbLogin : propTypes.func.isRequired
 }
 const mapStateToProps = ( ) => {
 
 }
-export default connect(null, { loginAction }) (Login);
+export default connect(null, { sbLogin }) (Login);

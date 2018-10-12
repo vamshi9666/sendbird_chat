@@ -6,13 +6,11 @@ import Channel from './channel'
 import { 
     Button
 } from 'react-bootstrap';
-import {  store } from '../index'
 
 class SideBar extends Component {
     constructor(props){
         super(props);
         this.state= {
-            channels:[],
             newChannelName:''
         }
 
@@ -21,22 +19,20 @@ class SideBar extends Component {
         e.preventDefault();
         this.props.addChannel()
     }
-    componentWillMount (){
-        this.setState({
-            channels: store.getState().channel.channels
-        })
+    componentDidMount (){
+
     }
     handleChange(e) {
         this.setState({newChannelName: e.target.value});
       }
-    render() {
-        console.log(this.state.channels[0]);
-        
+    render() {     
+        console.log(this.props);
+           
         return (
-            <div className="rooms-list">
+            <div >
                  <h3>channels</h3>
                 <ul>
-                {this.state.channels.map(channel=> (
+                {this.props.openChannels.map(channel=> (
                     <Channel  name={channel.name} />
                 ))}
                 <div>
@@ -50,8 +46,14 @@ class SideBar extends Component {
     }
 }
 SideBar.propTypes = {
-    getChannels: propTypes.func.isRequired,
+    openChannels: propTypes.array.isRequired,
     addChannel : propTypes.func.isRequired
 }
 
-export default  connect(null, { getChannels , addChannel}) (SideBar);
+const mapStateToProps = (state) => {
+    return {
+        openChannels : state.openChannel.channels
+    }
+}
+
+export default  connect(mapStateToProps, { getChannels , addChannel}) (SideBar);
