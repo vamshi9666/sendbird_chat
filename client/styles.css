@@ -30,6 +30,13 @@
   #sidebar {
       grid-area: sidebar;
       padding: 5px 0 0 5px;
+      text-align: center;
       border-right: 1px solid #3f3f3f;
+      justify-content: space-around;
       height: 100%;
+  }
+
+  .channel-one {
+      width: 90%;
+      margin-left: 10px;
   }
