@@ -6,14 +6,21 @@ const defaultState = {
 export  default function (state = defaultState, action ){
     switch (action.type) {
         case "ADD_CHANNELS":
-            state.channels = action.channels;
-            break;
+           return {
+               ...state,
+               channels: action.channels
+           }
         case "DELETE_CHANNEL":
-            state.channels = action.payload
-            break;
+           return {
+               ...state,
+               channels: action.channels
+           }
         case "CLEAR_CHANNELS":
-            state.channels = [];
-            break;
+           return {
+               ...state,
+               channels: null,
+               loading: false
+           }
     }
     return state;
 }

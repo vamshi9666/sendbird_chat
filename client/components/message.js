@@ -1,11 +1,15 @@
 import React from 'react'
 import '../styles.css'
 
-function Message(props) {  
+function Message(props) {
     return (
-        <div className="message">
+        <div className="bubble">
             <div className="message-username">{props.username}</div>
-            <div class="bubble me">{props.text}</div>
+            <div className="talk-bubble tri-right left-top">
+                <div className="talktext">
+                    <p>{props.text}</p>
+                </div>
+            </div>
         </div>
     )
 }

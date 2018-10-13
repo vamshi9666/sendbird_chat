@@ -9,6 +9,7 @@ import {
 class MessageList extends Component {
 	constructor(props) {
 		super(props);
+		
 
 	}
 	render() {
@@ -30,7 +31,7 @@ class MessageList extends Component {
 
 const mapStateToProps = (state) => {
 	return {
-		messages: state.message.messages
+		messages: state.message.messages,
 	}
 }
 

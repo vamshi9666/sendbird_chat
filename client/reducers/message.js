@@ -7,18 +7,35 @@ const defaultState = {
 export default function (state = defaultState, action) {
     switch (action.type) {
         case "SEND_MESSAGE":
-            state.messages = action.messages
-
+            return {
+                ...state,
+                messages: action.messages
+            }
         case "EDIT_MESSAGE":
-            state.messages = action.messages
+            return {
+                ...state,
+                messages: action.messages
+            }
         case "DELETE_MESSAGE":
-            state.messages = action.messages
+            return {
+                ...state,
+                messages: action.messages
+            }
         case "CONNECT_CHANNEL":
-            state.messages = action.messages,
-            state.activeChannel = action.activeChannel
+            return {
+                ...state,
+                activeChannel: action.activeChannel,
+                messages:action.messages
+            }
         case "DISCONNECT_CHANNEL":
-            state.activeChannel = null,
-            state.messages = null
+            return {
+                ...state, 
+                messages : null,
+                activeChannel: null
+            }
+        default :
+         return {
+             ...state
+         }
     }
-    return state
 }

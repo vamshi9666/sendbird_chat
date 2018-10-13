@@ -20,14 +20,14 @@ class HomePage extends Component {
   render() {
     return (
       <div id="container">
-      <aside id="sidebar">
-        <SideBar/>
+        <aside id="sidebar">
+          <SideBar className="sidebar" />
         </aside>
-      <section id="main">
-        <section id="messages-list"><MessagePage/></section>
-        <section id="new-message"><MessageForm/></section>
-      </section>
-</div>
+        <section id="main">
+          <section id="messages-list"><MessagePage /></section>
+          <section id="new-message"><MessageForm /></section>
+        </section>
+      </div>
     );
   }
 }

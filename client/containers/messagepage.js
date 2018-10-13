@@ -11,10 +11,6 @@ class MessagePage extends Component{
     render(){
         return (
             <div>
-                <div> 
-                    <Button className="btn" > Edit </Button>
-                    <Button className="btn btn-danger"> Delete </Button>    
-                 </div>
                 <MessageList messages={this.props.messages} />
             </div>
         )

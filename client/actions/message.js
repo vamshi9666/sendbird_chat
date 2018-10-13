@@ -5,20 +5,18 @@ export const connectChannel = (channel) => {
             if (error) {
                 console.log(error);
             }
-            if (response) {
+            const messageListQuery = channel.createPreviousMessageListQuery();
+            messageListQuery.load(30, true, function (messageList, error) {
+                if (error) {
+                    console.log(error);
+                    return;
+                }
                 dispatch({
                     type: "CONNECT_CHANNEL",
                     activeChannel: channel,
-                    messages: response
-                })
-            }
-            else {
-                dispatch({
-                    type: "CONNECT_CHANNEL",
-                    activeChannel: channel,
-                    messages: []
-                })
-            }
+                    messages: messageList
+                });
+            });
         })
     };
 }
@@ -49,9 +47,9 @@ export const sendMessage = (message) => {
                         return;
                     }
                     console.log(messageList);
-                    if(messageList){
+                    if (messageList) {
                         dispatch({
-                            type:"SEND_MESSAGE",
+                            type: "SEND_MESSAGE",
                             messages: messageList
                         })
                     }
