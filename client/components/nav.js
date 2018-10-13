@@ -14,8 +14,8 @@ import {
 
 class NavComponent extends Component {
     logout(e){
-        e.preventDefault();
-        this.props.sbLogout();
+        this.context.router.push('/');
+        window.location.reload()
     }
     render() {        
         return (
@@ -35,7 +35,7 @@ class NavComponent extends Component {
                             <Button onClick={this.logout.bind(this)} className="btn  btn-danger"> Log out </Button>
                             :
                             <Link to='login' >
-                                <Button > Login </Button>
+                                <Button className="btn " > Login </Button>
                             </Link>
                         }
                     </NavItem>
@@ -50,6 +50,11 @@ NavComponent.propTypes = {
     sbLogout: propTypes.func.isRequired,
     user : propTypes.object.isRequired
 }
+
+NavComponent.contextTypes = {
+    router: propTypes.object.isRequired
+}
+
 
 const mapStateToProps = (state) => {
     return {

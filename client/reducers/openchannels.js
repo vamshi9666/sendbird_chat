@@ -1,20 +1,19 @@
 const defaultState = {
     channels : [ ],
     loading:false,
-    activeChannel: null
 }
 
 export  default function (state = defaultState, action ){
-    switch (action.type){
+    switch (action.type) {
         case "ADD_CHANNELS":
-             state.channels = []
-              state.channels= action.payload
-        case "ENTER_CHANNEL":
-                state.activeChannel= action.payload
-        case "EXIT_CHANNEL":
-                state.activeChannel= null
+            state.channels = action.channels;
+            break;
         case "DELETE_CHANNEL":
-                state.channels=action.payload
+            state.channels = action.payload
+            break;
+        case "CLEAR_CHANNELS":
+            state.channels = [];
+            break;
     }
     return state;
 }

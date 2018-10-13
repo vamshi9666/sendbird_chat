@@ -16,7 +16,7 @@ export const getChannels = (obj) => {
             // Returns a list of channels that have "SendBird" in their names.
             dispatch({
                 type:"ADD_CHANNELS",
-                payload: channels
+                channels: channels
             })
         });
     }

@@ -13,13 +13,17 @@ class SideBar extends Component {
         this.state= {
             NAME:''
         }
+        this.addChannel  = this.addChannel.bind(this);
+        this.handleChange = this.handleChange.bind(this);
 
     }
-    addChannel(e){
-        e.preventDefault();
-        console.log(`add channel clicked `);
-        this.props.addChannel(this.state)
+    addChannel(){
+        this.props.addChannel(this.state);
+        this.setState({NAME:null})
+        this.forceUpdate();
+        
     }
+
     componentDidMount (){
         this.props.getChannels()
     }
@@ -33,8 +37,8 @@ class SideBar extends Component {
                 <h3>channels</h3>
                 <ul>
                     {this.props.openChannels.map(channel => (
-                        <Channel name={channel.name} />
-                    ))}
+                        <Channel instance={channel} name={channel.name} />
+                    ))} 
                     <div>
                         <input type="text" value={this.state.NAME} onChange={this.handleChange.bind(this)} />
                         <Button className="btn" onClick={this.addChannel.bind(this)}>  +  </Button>
@@ -48,7 +52,7 @@ class SideBar extends Component {
 
 SideBar.propTypes = {
     openChannels: propTypes.array.isRequired,
-    addChannel : propTypes.func.isRequired
+    addChannel : propTypes.func.isRequired,
 }
 
 const mapStateToProps = (state) => {
