@@ -20,8 +20,6 @@ class MessagePage extends Component{
 const mapStateToProps = (state) => {
     return {
         messages: state.message.messages,
-        user: state.user.user,
-
     }
 }
 

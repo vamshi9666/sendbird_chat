@@ -18,8 +18,9 @@ class MessageList extends Component {
 				<ul>
 					{
 						this.props.messages.map(message => {
+							console.log(message)
 							return (
-								<Message username={this.props.user} text={message.message} />
+								<Message username={message._sender.userId}  text={message.message} />
 							)
 						})
 					}

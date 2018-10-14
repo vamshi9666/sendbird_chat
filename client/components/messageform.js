@@ -22,7 +22,10 @@ class MessageForm extends Component {
 
     sendMessage(e){
         e.preventDefault();
-        this.props.sendMessage(this.state.message_input)
+        this.props.sendMessage(this.state.message_input);
+        this.setState({
+            message_input: ''
+        })
 
     }
     handleChange(e){
@@ -34,17 +37,17 @@ class MessageForm extends Component {
     render() {
         return (
             <div className="message-form" >
-                <form>
+                <form onSubmit={this.sendMessage} >
                     <input style={inputStyle} type="text" value={this.state.message_input} onChange={this.handleChange.bind(this)} name="name" />
                 </form>
-                <Button type="submit" onClick={this.sendMessage} > Send</Button>
+                <Button className="btn" type="submit"> Send </Button>
             </div>
         )
     }
 }
 const mapStateToProps = (state) => {
     return {
-
+        
     }
 }
 

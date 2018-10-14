@@ -40,7 +40,6 @@ export const sendMessage = (message) => {
                 return;
             }
             console.log(message);
-            if (message) {
                 const messageListQuery = channel.createPreviousMessageListQuery();
                 messageListQuery.load(30, true, function (messageList, error) {
                     if (error) {
@@ -54,7 +53,6 @@ export const sendMessage = (message) => {
                         })
                     }
                 });
-            }
         });
     }
 }
