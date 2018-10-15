@@ -11,7 +11,7 @@ class MessagePage extends Component{
     render(){
         return (
             <div>
-                <MessageList messages={this.props.messages} />
+                <MessageList title={this.props.channelName? 'channel title' : this.props.channelName } messages={this.props.messages} />
             </div>
         )
     }
@@ -20,6 +20,7 @@ class MessagePage extends Component{
 const mapStateToProps = (state) => {
     return {
         messages: state.message.messages,
+        channelName : state.message.activeChannel.name
     }
 }
 

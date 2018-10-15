@@ -21,7 +21,6 @@
 }
 .username-message{
 	font-size: 10px;
-	color:
 }
 #new-message {
     position: fixed;
@@ -81,7 +80,13 @@
 	-moz-border-radius: 30px;
 
 }
+.message-list-title	{
+	text-align: center
+}
 
+.message-list{
+	overflow: scroll
+}
 /* Right triangle placed top left flush. */
 .tri-right.border.left-top:before {
 	content: ' ';

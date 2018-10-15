@@ -14,18 +14,22 @@ class Channel extends Component {
         super(props);
         this.state = {
             instance:this.props.instance,
+            isActive: false
         }
         this.openConnection = this.openConnection.bind(this)
     }
     openConnection () {
-        this.props.connectChannel(this.state.instance)
+        this.props.connectChannel(this.state.instance);
+        this.setState({
+            isActive: true
+        })
     }
     render() {
         return (
-            <Panel onClick={this.openConnection} className="channel-one"  >
-                <Panel.Body>
+            <Panel bsStyle={this.state.isActive ? 'success' : 'primary' } onClick={this.openConnection} className="channel-one"  >
+                <Panel.Heading>
                     {this.props.name}
-                </Panel.Body>
+                </Panel.Heading>
                 <Button > connect </Button>
             </Panel>
         )

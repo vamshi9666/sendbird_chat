@@ -23,16 +23,30 @@ export const getChannels = (obj) => {
 }
 
 
-export const addChannel = (obj) => {
+export const addChannel = (name) => {
     return (dispatch,getState) => {
         const sb = SendBird.getInstance();
-        sb.OpenChannel.createChannel(obj.NAME,null,null, function(channel, error) {
+        sb.OpenChannel.createChannel(name,null,null, function(channel, error) {
             if (error) {
                 console.log(error);
                 return;
             }
              // onCreated
              console.log(channel);
+             var openChannelListQuery = sb.OpenChannel.createOpenChannelListQuery();
+             openChannelListQuery.next(function (channels, error) {
+                 if (error) {
+                     console.log(error);
+                     return;
+                 }
+                 console.log(channels);
+                 
+                 // Returns a list of channels that have "SendBird" in their names.
+                 dispatch({
+                     type:"ADD_CHANNELS",
+                     channels: channels
+                 })
+             });
         });
     }
 }

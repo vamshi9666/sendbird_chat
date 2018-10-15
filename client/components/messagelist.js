@@ -9,18 +9,22 @@ import {
 class MessageList extends Component {
 	constructor(props) {
 		super(props);
-		
+
 
 	}
 	render() {
 		return (
-			<div className="message-list">
-				<ul>
+			<div >
+				<div className="message-list-title">
+					<h4>{this.props.title}</h4>
+				</div>
+
+				<ul className="message-list">
 					{
 						this.props.messages.map(message => {
 							console.log(message)
 							return (
-								<Message username={message._sender.userId}  text={message.message} />
+								<Message username={message._sender.userId} text={message.message} />
 							)
 						})
 					}
@@ -37,4 +41,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, { }) (MessageList);
+export default connect(mapStateToProps, {})(MessageList);

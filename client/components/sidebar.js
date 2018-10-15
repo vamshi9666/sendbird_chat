@@ -18,10 +18,9 @@ class SideBar extends Component {
 
     }
     addChannel(){
-        this.props.addChannel(this.state);
-        this.setState({NAME:null})
+        this.props.addChannel(this.state.NAME);
+        this.setState({NAME:' '})
         this.forceUpdate();
-        
     }
 
     componentDidMount (){
@@ -41,7 +40,7 @@ class SideBar extends Component {
                     ))} 
                     <div>
                         <input type="text" value={this.state.NAME} onChange={this.handleChange.bind(this)} />
-                        <Button className="btn" onClick={this.addChannel.bind(this)}>  +  </Button>
+                        <Button className="btn" onClick={this.addChannel}>  +  </Button>
                     </div>
 
                 </ul>
