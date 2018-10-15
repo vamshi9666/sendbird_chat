@@ -26,7 +26,7 @@ class Channel extends Component {
     }
     render() {
         return (
-            <Panel bsStyle={this.state.isActive ? 'success' : 'primary' } onClick={this.openConnection} className="channel-one"  >
+            <Panel bsStyle='primary' onClick={this.openConnection} className="channel-one"  >
                 <Panel.Heading>
                     {this.props.name}
                 </Panel.Heading>

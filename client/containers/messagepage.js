@@ -19,9 +19,8 @@ class MessagePage extends Component{
 
 const mapStateToProps = (state) => {
     return {
-        messages: state.message.messages,
-        channelName : state.message.activeChannel.name
-    }
+        messages: state.message.messages
+        }
 }
 
 export default connect(mapStateToProps, { }) (MessagePage);

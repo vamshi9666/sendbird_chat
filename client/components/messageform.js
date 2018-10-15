@@ -6,7 +6,8 @@ import {
     Button
 } from 'react-bootstrap'
 const inputStyle = {
-    'width':'65%',
+    'width':'75vh',
+    'marginRight': '20px'
 
 }
 
@@ -38,9 +39,9 @@ class MessageForm extends Component {
         return (
             <div className="message-form" >
                 <form onSubmit={this.sendMessage} >
-                    <input style={inputStyle} type="text" value={this.state.message_input} onChange={this.handleChange.bind(this)} name="name" />
+                    <input  style={inputStyle} type="text" value={this.state.message_input} onChange={this.handleChange.bind(this)} name="name" />
                 </form>
-                <Button className="btn" type="submit"> Send </Button>
+                <Button className="btn btn-success" type="submit"> </Button>
             </div>
         )
     }

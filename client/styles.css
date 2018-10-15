@@ -13,10 +13,12 @@
     grid-template-columns: 1fr 3fr;
     grid-template-areas: "sidebar main";
    width: 100vw;
-    height: 100vh;
+		height: 100vh;
+		position: fixed;
 }
 #main {
 		grid-area: main;
+		overflow-y: scroll;
 
 }
 .username-message{
@@ -27,23 +29,24 @@
     bottom: 0;
     width: 100%;
     padding: 5px;
-    margin-left: 0px;
-    border-top: 1px solid #3f3f3f;
+		margin-left: 0px;
+		background-color: aliceblue;
+    border-top: 1px solid #e0d3d3;
 }
 #messages-list {
     padding: 5px 0 0 5px;
 		position:relative;
+		overflow: scroll;
 	}
 #sidebar {
     grid-area: sidebar;
     padding: 5px 0 0 5px;
     border-right: 1px solid #3f3f3f;
-    height: 100%;
-    overflow: scroll
+		height: 100%;
+		overflow: scroll;
 }
 
 .sidebar {
-    overflow-y: scroll;
 }
   .channel-one {
       width: 90%;
@@ -62,6 +65,13 @@
       flex-direction: row;
   }
  
+.bubble .pro-pic {
+	width: 35px;
+	height: 35px;
+	border-radius: 25px;
+	margin-right: 20px;
+}
+
 /* CSS talk bubble */
 .talk-bubble {
 	margin: 40px;
@@ -69,7 +79,8 @@
   position: relative;
 	width: 200px;
 	height: auto;
-	background-color: lightyellow;
+	background-color: rgb(243, 189, 73);
+	border-radius: 15px;
 }
 .border{
   border: 8px solid #666;
@@ -85,7 +96,7 @@
 }
 
 .message-list{
-	overflow: scroll
+
 }
 /* Right triangle placed top left flush. */
 .tri-right.border.left-top:before {
@@ -98,7 +109,7 @@
   top: -8px;
 	bottom: auto;
 	border: 32px solid;
-	border-color: #666 transparent transparent transparent;
+	border-color: rgb(233, 197, 98) transparent transparent transparent;
 }
 .tri-right.left-top:after{
 	content: ' ';
@@ -110,7 +121,7 @@
   top: 0px;
 	bottom: auto;
 	border: 22px solid;
-	border-color: lightyellow transparent transparent transparent;
+	border-color: rgb(248, 209, 81) transparent transparent transparent;
 }
 
 /* Right triangle, left side slightly down */

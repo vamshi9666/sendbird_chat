@@ -24,7 +24,7 @@ class MessageList extends Component {
 						this.props.messages.map(message => {
 							console.log(message)
 							return (
-								<Message username={message._sender.userId} text={message.message} />
+								<Message imgUrl={message._sender.profileUrl} username={message._sender.userId} text={message.message} />
 							)
 						})
 					}
