@@ -11,7 +11,7 @@ class MessagePage extends Component{
     render(){
         return (
             <div>
-                <MessageList title={this.props.channelName? 'channel title' : this.props.channelName } messages={this.props.messages} />
+                <MessageList  messages={this.props.messages} />
             </div>
         )
     }
