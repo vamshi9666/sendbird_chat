@@ -17,6 +17,7 @@ body {
 }
 #main {
   grid-area: main;
+  overflow: scroll;
 }
 .username-message {
   font-size: 10px;
@@ -38,13 +39,13 @@ body {
 #messages-list {
   padding: 5px 0 0 5px;
   position: relative;
-  overflow: scroll;
 }
 #sidebar {
   grid-area: sidebar;
   padding: 5px 0 0 5px;
   border-right: 1px solid #3f3f3f;
-  height: 100%;
+  height: 90%;
+  overflow: scroll;
 }
 .navbar {
   margin: 0;
