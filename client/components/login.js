@@ -3,7 +3,6 @@ import propTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {sbLogin} from '../actions/login';
 import {FormControl, FormGroup, ControlLabel, Button} from 'react-bootstrap';
-
 const formGroup = {
   textAlign: 'center',
   marginLeft: '20%',
@@ -50,16 +49,6 @@ class Login extends Component {
               onChange={this.handleChange}
             />
             <FormControl.Feedback />
-          </FormGroup>
-          <FormGroup>
-            <ControlLabel>Nick Name</ControlLabel>
-            <FormControl
-              name="nickName"
-              type="text"
-              value={this.state.nickName}
-              placeholder="Enter text"
-              onChange={this.handleChange}
-            />
           </FormGroup>
           <Button type="submit" style={btnCus}>
             Sign in

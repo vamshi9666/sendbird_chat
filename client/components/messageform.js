@@ -3,6 +3,8 @@ import React, {Component} from 'react';
 import propTypes from 'prop-types';
 import {sendMessage} from '../actions/message';
 import {Button} from 'react-bootstrap';
+import { Icon, Intent } from "@blueprintjs/core";
+
 const inputStyle = {
   width: '75vh',
   marginRight: '20px',
@@ -43,11 +45,12 @@ class MessageForm extends Component {
             name="name"
           />
         </form>
+       
         <Button
           className="btn btn-success"
           onClick={this.sendMessage}
           type="submit">
-          {' '}
+           <Icon icon="double-chevron-right"></Icon>
         </Button>
       </div>
     );
