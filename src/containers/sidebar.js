@@ -8,11 +8,9 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { getChannels } from '../redux/actions/channel';
+import { getChannels , createChannel  } from '../redux/actions/channel';
 import Channel from '../components/channel'
-import { Icon } from '@blueprintjs/core'
-import { SourceMapConsumer } from 'source-map';
- class Sidebar extends Component{
+class Sidebar extends Component{
     constructor(props){
         super(props)
         this.state= {
@@ -28,7 +26,7 @@ import { SourceMapConsumer } from 'source-map';
         this.setState({ open: false });
       };
     componentWillMount(){
-        this.props.getChannels()
+        this.props.getChannels(); 
     }
     handleChange = (e)=> {
         e.preventDefault();
@@ -37,8 +35,11 @@ import { SourceMapConsumer } from 'source-map';
         });
     }
     createChannel =() => {
+        const { friendId } = this.state;
+        this.props.createChannel(friendId);
+        console.log('channel created ');
         
-    }
+    }   
     render(){
         return (
             <Container>
@@ -74,7 +75,7 @@ import { SourceMapConsumer } from 'source-map';
         </Dialog>
                 {this.props.channels.map(channel => {
                     return (
-                        <Channel key={channel.createdAt} name={channel.name} instance={channel}  />
+                        <Channel key={channel.createdAt} name={channel.members[1].userId} instance={channel}  />
                     )
                 })}
             </Container>
@@ -89,4 +90,4 @@ const MapStateToProps = (state) => {
 
 }
 
-export default connect( MapStateToProps, { getChannels })(Sidebar)
+export default connect( MapStateToProps, { getChannels, createChannel})(Sidebar)

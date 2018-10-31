@@ -2,6 +2,7 @@ import  React , { Component } from 'react'
 import '../App.css'
 import SideBar from './sidebar'
 import MessageList from '../components/messagelist';
+import MessageForm from '../components/messageform'
 export default class extends Component {
  render(){
      return (
@@ -13,7 +14,9 @@ export default class extends Component {
           <section id="messages-list">
           <MessageList/>
           </section>
-          <section id="new-message"></section>
+          <section id="new-message">
+            <MessageForm/>
+          </section>
         </section>
 </div>
         

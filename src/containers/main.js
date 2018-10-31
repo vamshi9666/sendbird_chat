@@ -5,30 +5,33 @@ import {
 } from 'react-router-dom'
 import "../App.css"
 import {
-    Navbar,
-    Nav,
-    NavbarBrand,
-    NavItem
-} from 'reactstrap'
+    Navbar, 
+    NavbarDivider,
+    NavbarHeading,
+    NavbarGroup
+} from '@blueprintjs/core'
 import home from './home';
 import SignInContainer from './signin';
+import { connect } from 'react-redux';
+import { Icon } from '@blueprintjs/core';
+class Main extends Component {
 
-export default class Main extends Component {
     constructor(props) {
         super(props)
     }
     render() {
         return (
             <div className="whole-con" >
-                <Navbar color="light" >
-                    <NavbarBrand href="/">SendBird</NavbarBrand>
-                    <Nav>
-                        <NavItem> <Link to="home" >Home</Link> </NavItem>
-                    </Nav>
+                <Navbar className="bp3-dark">
+                    <Navbar.Group align='left'>
+                        <Navbar.Heading>Blueprint</Navbar.Heading>
+                        <Navbar.Divider />
+                        <p>{this.props.currentUser}</p>
+                    </Navbar.Group>
                 </Navbar>
                 <div>
                     <Switch>
-                        <Route  path="/home" component={home} />
+                        <Route path="/home" component={home} />
                         <Route exact path="/" component={SignInContainer} />
                     </Switch>
                 </div>
@@ -36,3 +39,11 @@ export default class Main extends Component {
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        currentUser: state.user.user.userId
+    }
+}
+
+export default connect(mapStateToProps, {})(Main)

@@ -11,6 +11,12 @@ export default function(state=initialState, action){
                 user: action.payload,
                 sbInstance: action.sb
             }
+        case "LOGOUT":
+            return {
+                ...state,
+                user: null,
+                sbInstance: null
+            }
         default :
             return {
                 ...state

@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import Sendbird from 'sendbird';
 import {  Card, Elevation } from "@blueprintjs/core";
 import { Button } from 'reactstrap'
 import propTypes from 'prop-types'
 import {  connect } from 'react-redux';
+import SendBird from 'sendbird'
 import { connectChannel  } from '../redux/actions/channel';
 
 class Channel extends Component {
@@ -10,15 +12,32 @@ class Channel extends Component {
         super(props);
         this.state = {
             instance:this.props.instance,
-            isActive: false
         }
         this.openConnection = this.openConnection.bind(this)
     }
-    openConnection () {
+    openConnection = () =>  {
+        console.log(this.props);
+        
         this.props.connectChannel(this.state.instance);
-        this.setState({
-            isActive: true
-        })
+
+    }
+    componentWillMount(){
+        const props = this.props;
+        let sb = SendBird.getInstance();
+
+        let channelHandler  = new sb.ChannelHandler();
+        
+  
+        channelHandler.onMessageReceived = function (channel, message){
+        
+            
+          console.log(`update in channel ${channel} : ${message}`);
+          props.connectChannel(channel);
+          
+        }
+        sb.addChannelHandler('1', channelHandler)
+
+  
     }
     render() {
         return (

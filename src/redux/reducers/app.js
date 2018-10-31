@@ -1,7 +1,6 @@
 const initialState = {
     channels: [],
-    activeChannel: null,
-    participants: [],
+    activeChannel: {},
     messages: []
 }
 

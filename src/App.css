@@ -332,3 +332,11 @@ body {
   -webkit-margin-before: 0em;
   -webkit-margin-after: 0em;
 }
+
+.cus-btn{
+  width: 50px;
+
+  height: 45px;
+  margin: 0 25px;
+  align-self: center;
+}
